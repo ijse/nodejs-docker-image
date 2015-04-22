@@ -11,19 +11,28 @@ nodejs-docker-image
 git clone https://github.com/ijse/nodejs-docker-image.git
 cd nodejs-docker-image
 
-# 构建镜像
-docker build --force-rm -t ijse/nvm .
+# 开发环境
+## 构建镜像
+docker build --force-rm -t ijse/nvm-dev -f ./Dockerfile_dev .
 
-# 运行容器
+## 运行容器
 docker run -it -v /nodejs-docker-image:/workspace --name my-project -p 3000:8080 ijse/nvm
 npm install && node index.js
+
+# 生产环境
+## 构建镜像
+docker build --force-rm -t ijse/nvm -f ./Dockerfile .
+
+## 运行容器
+docker run --name my-project ijse/nvm
 ```
 
-于是，容器中的程序便运行起来了，访问[http://localhost:3000](http://localhost:3000)查看效果。
+于是，容器中的程序便运行起来了
 
 >**注意：**
 >
 > * 如果是在Windows或Mac系统下，由于Docker是运行在虚拟机里的，所以访问时`localhost`要换为虚拟机的ip地址。
+> * 可以通过`docker inspect <container_id>`来获取运行的container的ip和端口信息
 
 
 ## 更多内容
