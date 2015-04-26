@@ -38,6 +38,6 @@ RUN cd $WORK_DIR && npm install
 WORKDIR $WORK_DIR
 
 # 公开镜像的80端口
-EXPORSE 80
+EXPOSE 80
 
 CMD npm start
