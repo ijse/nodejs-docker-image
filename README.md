@@ -17,6 +17,7 @@ docker build --force-rm -t ijse/nvm-dev -f ./Dockerfile_dev .
 
 ## 运行容器
 docker run -it -v /nodejs-docker-image:/workspace --name my-project -p 3000:8080 ijse/nvm
+## 此时会启动进入容器内的bash提示符，在这里可以安装程序依赖（对于容器平台），及启动调试程序
 npm install && node index.js
 
 # 生产环境
